@@ -1,0 +1,122 @@
+--Synchronous Sequential Machine
+--https://vasanza.blogspot.com
+--https://github.com/vasanza/MSI-VHDL
+
+--Library
+library ieee;
+use ieee.std_logic_1164.all;
+
+--Entity
+entity MSS is
+	port(
+		resetn,clk,start,show,child,guy,sr,A_B0,A_B1,A_B2,A_B3,A_B4,A_B5,A_B6,equal: in std_logic;
+		LdD,LdR,LdS,En2,Rcont0,Ewr,Rsost0,toWrite,EnR,Rcont1,Ld1,En1,EnIH,EnIHD,Rsost1,Rsost3,Ld2,Ld22,En22,EnIL,EnILD,Rsost2,Rsost4,EnM,Rsost5,wrrite,showing,LdHM,EnHM,EnC,OFFO,Done,EnDD: out std_logic;
+      Nv: out std_logic_vector(1 downto 0));
+		end MSS;
+
+--Architecture
+architecture solve of MSS is
+	-- Signals,Constants,Variables,Components
+	type estado is (Ta,Tb,Tc,Td,Te,Tf,Tg,Th,Ti,Tj,Tk,Tl,Tm,Tn,Too,Tp,Tq,Tr,Ts,Tt);
+	signal y: estado;
+	signal aux1,aux2:std_logic_vector(1 downto 0);
+	begin
+	--Process #1: Next state decoder and state memory
+	process(resetn,clk)
+	--Sequential programming
+		begin
+			if resetn = '0' then y<= Ta;
+			elsif (clk'event and clk = '1') then
+				case y is
+					when Ta => 
+							  if start='1' then y <= Tb;
+							  else y <= Ta; end if;	
+							  En1<='1';Ld1<='1';En22<='1';Ld22<='1';Rsost1<='1';Rsost2<='1';Rsost5<='1';LdS<='1';
+		         when Tb => 
+							  if start='0' then y <= Tc;
+							  else y <= Tb; end if;					  
+					when Tc => 
+							  if A_B0='1' then y <= Td;
+							  else y <= Tc; end if;
+				   when Td => 
+							  if A_B0='0' then y <= Te;
+							  else y <= Tj; end if;
+					when Te => y <= Tf;
+					when Tf => y <= Tg;
+					when Tg => y <= Th;
+					when Th => y <= Ti;
+					when Ti => y <= Td;
+		         when Tj => 
+							  if A_B1='0' then y <= Tk;
+							  else y <= Tr; end if;
+	      		when Tk => 
+							  if A_B2='0' then y <= Tl;
+							  else y <= Tm; end if;
+					when Tl => y <= Tk;
+					when Tm =>
+					       if A_B2='1' then y <= Tj;
+							  else y <= Tn; end if;
+					when Tn =>
+					       aux1<=(A_B6 & equal);
+					       if (aux1="00") then y <= Tq;
+							  else y <= Too; end if;
+				   when Tq => y <= Tm;
+					when Too => y <= Tp;
+					when Tp => y <= Tq;
+					when Tr =>
+					       if show='1' then y <= Ts;
+							  else y <= Tr; end if;
+				   when Ts =>
+					       if A_B5='0' then y <= Tt;
+							  else y <= Ta; end if;
+					when Tt =>
+					       if A_B4='1' then y <= Ts;
+							  else y <= Tt; end if;
+				end case;
+			end if;
+	end process;
+	--Process #2: Output decoder
+	process(y)
+		begin
+			case y is
+				when Tc => wrrite<='1';OFFO<='1';
+				           if (A_B0='0') then En2<='1';
+							  else Rcont0<='1'; end if;	
+				when Td => if (child='0') then Ewr<='1';EnDD<='1';
+							  elsif guy='0' then Nv(0)<='1';EnDD<='1';
+							  elsif sr='0' then Nv(1)<='1';Ewr<='1';EnDD<='1';
+							  else Nv<="11";Ewr<='1';EnDD<='1'; end if;
+				when Te => Rcont0<='1';toWrite<='1';
+				when Tf => LdR<='1';EnR<='1';toWrite<='1';
+				when Tg => EnR<='1';wrrite<='1';toWrite<='1';
+				when Th => Rcont1<='1';Ld2<='1';En2<='1';Rsost0<='1';
+				when Ti => En2<='1';
+				when Tj => Rcont0<='1';Rcont1<='1';toWrite<='1';En22<='1';Ld2<='1';
+				           if A_B1='1' then En1<='1';Ld1<='1';En2<='1';Ld2<='1';Rsost1<='1';Rsost2<='1';Rsost5<='1';EnC<='1';
+							  end if;	
+			   when Tk => EnIH<='1';EnIHD<='1';toWrite<='1';
+				           if A_B2='1' then En22<='1';Ld2<='1';
+							  end if;
+				when Tl => EnILD<='1';toWrite<='1';En22<='1';
+				           if A_B3='1' then EnM<='1';
+							  end if;
+				when Tm => EnIH<='1';EnIHD<='1';toWrite<='1';
+				           if A_B2='1' then En1<='1';
+							  end if;
+				when Tn =>  EnILD<='1';toWrite<='1';
+				           aux2<=(A_B6 & equal);
+					       if (aux2="11") then EnIL<='1';
+							  else y <= Too; end if;
+				when Tq => EnHM<='1';toWrite<='1';En22<='1';
+				when Too => Rsost3<='1';toWrite<='1';Rsost4<='1';
+				when Tp => toWrite<='1';wrrite<='1';
+				when Tr => Done<='1';LdHM<='1';
+				when Ts => Done<='1';LdS<='1';
+				when Tt => showing<='1';toWrite<='1';
+				          if A_B4='1' then EnHM<='1';
+							  end if;
+				when others => wrrite<='0';
+			end case;
+	end process;
+	--Process #n... 
+end solve;

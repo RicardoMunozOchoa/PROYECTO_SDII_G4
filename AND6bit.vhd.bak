@@ -1,0 +1,18 @@
+--Library
+library ieee;
+use ieee.std_logic_1164.all;
+
+--Entity
+entity AND6bit is
+	port (
+		a5,a4,a3,a2,a1,a0,s : in std_logic;
+		A: out std_logic_vector(5 downto 0));
+end AND5bit;
+
+--Architecture
+architecture solve of AND5bit is
+begin
+		if s='1' then
+		   A<=a5 & a4 & a3 & a2 & a1 & a0;
+	   else A<=(others =>'0'); end if;
+end solve;

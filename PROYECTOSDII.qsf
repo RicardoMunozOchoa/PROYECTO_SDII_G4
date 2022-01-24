@@ -1,0 +1,151 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2019  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+# Date created = 09:50:07  January 15, 2022
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PROYECTOSDII_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE15F23C6
+set_global_assignment -name TOP_LEVEL_ENTITY Block1
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 19.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:50:07  JANUARY 15, 2022"
+set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name VHDL_FILE Add.vhd
+set_global_assignment -name VHDL_FILE Reg.vhd
+set_global_assignment -name VHDL_FILE CLOCK_DIV_10_MHz.vhd
+set_global_assignment -name VHDL_FILE RAM.vhd
+set_global_assignment -name VHDL_FILE MSS.vhd
+set_global_assignment -name VHDL_FILE Comparator.vhd
+set_global_assignment -name VHDL_FILE Cnt_Ld.vhd
+set_global_assignment -name VHDL_FILE Cnt_cellex.vhd
+set_global_assignment -name VHDL_FILE RegDouble.vhd
+set_global_assignment -name VHDL_FILE ROM.vhd
+set_global_assignment -name VHDL_FILE concat.vhd
+set_global_assignment -name VHDL_FILE concat2.vhd
+set_global_assignment -name VHDL_FILE OR4bit.vhd
+set_global_assignment -name VHDL_FILE OR3bit.vhd
+set_global_assignment -name VHDL_FILE AND6bit.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
+set_global_assignment -name BDF_FILE Block1.bdf
+set_global_assignment -name VHDL_FILE AND7bit.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_location_assignment PIN_G21 -to start
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to start
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to start
+set_location_assignment PIN_AB16 -to show
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to show
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to show
+set_location_assignment PIN_T2 -to resetn
+set_location_assignment PIN_G1 -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetn
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to resetn
+set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_location_assignment PIN_T12 -to done
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to done
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to done
+set_location_assignment PIN_H11 -to Dat[0]
+set_location_assignment PIN_E11 -to Dat[1]
+set_location_assignment PIN_A13 -to Dat[2]
+set_location_assignment PIN_L15 -to Dat[3]
+set_location_assignment PIN_A9 -to Dat[4]
+set_location_assignment PIN_A14 -to Dat[5]
+set_location_assignment PIN_U21 -to Dat[6]
+set_location_assignment PIN_AA8 -to Dat[7]
+set_location_assignment PIN_P22 -to Dat[8]
+set_location_assignment PIN_G12 -to Dat[9]
+set_location_assignment PIN_M6 -to Dat[10]
+set_location_assignment PIN_N18 -to Dat[11]
+set_location_assignment PIN_AB17 -to Dat[12]
+set_location_assignment PIN_N17 -to Dat[13]
+set_location_assignment PIN_P2 -to Dat[14]
+set_location_assignment PIN_R20 -to Dat[15]
+set_location_assignment PIN_U8 -to Dat[16]
+set_location_assignment PIN_T11 -to Dat[17]
+set_location_assignment PIN_V10 -to Dat[18]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[4]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[0]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[9]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[1]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[5]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[2]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[3]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[15]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[6]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[8]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[11]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[13]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[12]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[16]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[18]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[17]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[7]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[14]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat[10]
+set_instance_assignment -name IO_STANDARD "3.0-V LVTTL" -to Dat
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[18]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to Dat
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
